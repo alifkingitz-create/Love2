@@ -4,11 +4,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+/* Full screen center */
 body{
   margin:0;
   font-family:cursive;
   background:#ffd6e7;
-  text-align:center;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+/* page gulo full width */
+.page{
+  width:100%;
+  display:none;
+}
+
+.active{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
 }
 
 /* hide pages */
@@ -23,7 +41,7 @@ body{
 /* design */
 .card{
   background:#ffe6f0;
-  margin:20px;
+  margin:0px;
   padding:20px;
   border-radius:20px;
 }
@@ -48,11 +66,40 @@ button{
 
 /* letters */
 .letter{
-  background:#c94c84;
-  margin:10px;
-  padding:15px;
+  width:140px;
+  height:100px;
+  background:#ff99cc;
+  margin:12px;
   border-radius:10px;
   color:white;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-size:14px;
+  text-align:center;
+  padding:10px;
+
+  box-shadow:0 4px 8px rgba(0,0,0,0.2);
+
+  position:relative;
+}
+
+/* Envelope triangle */
+.letter::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:0;
+  height:0;
+  border-left:70px solid transparent;
+  border-right:70px solid transparent;
+  border-top:50px solid #ff66a3;
+}
+  .letter:active{
+  transform:scale(0.95);
 }
 
 /* popup */
