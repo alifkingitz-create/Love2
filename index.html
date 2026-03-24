@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:cursive;
+  background:#ffd6e7;
+  text-align:center;
+}
+
+/* hide pages */
+.page{
+  display:none;
+}
+
+.active{
+  display:block;
+}
+
+/* design */
+.card{
+  background:#ffe6f0;
+  margin:20px;
+  padding:20px;
+  border-radius:20px;
+}
+
+button{
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#ff80b3;
+  color:white;
+  margin:10px;
+}
+
+.doll{
+  font-size:50px;
+  animation:bounce 1s infinite;
+}
+
+@keyframes bounce{
+  50%{transform:translateY(-10px);}
+}
+
+/* letters */
+.letter{
+  background:#c94c84;
+  margin:10px;
+  padding:15px;
+  border-radius:10px;
+  color:white;
+}
+
+/* popup */
+.popup{
+  display:none;
+  position:fixed;
+  top:15%;
+  left:10%;
+  width:80%;
+  background:white;
+  padding:10px;
+  border-radius:10px;
+}
+
+.popup img{
+  width:100%;
+}
+
+/* flower */
+.flowers span{
+  position:fixed;
+  top:-10px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(100vh);}
+}
+</style>
+
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="music.mp3">
+</audio>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+  <div class="card">
+    <h2>I made something for you 💖</h2>
+    <div class="doll">🐱</div>
+    <button onclick="start()">What?</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+  <div class="card">
+    <h2>Will you see it? 🥺</h2>
+    <div class="doll">🐻🐼</div>
+    <button onclick="show('letters')">Yes</button>
+    <button onclick="show('no')">No</button>
+  </div>
+</div>
+
+<!-- NO PAGE -->
+<div id="no" class="page">
+  <div class="card">
+    <h2>Why no 😒</h2>
+    <button onclick="show('page2')">Try Again</button>
+  </div>
+</div>
+
+<!-- LETTERS -->
+<div id="letters" class="page">
+  <h2>Open When 💖</h2>
+
+  <div class="letter" onclick="openLetter(1)">Sad</div>
+  <div class="letter" onclick="openLetter(2)">Miss Me</div>
+  <div class="letter" onclick="openLetter(3)">Happy</div>
+  <div class="letter" onclick="openLetter(4)">Angry</div>
+  <div class="letter" onclick="openLetter(5)">Lonely</div>
+
+  <button onclick="show('final')">➡</button>
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <span onclick="closePopup()">➡</span>
+  <img id="photo">
+  <p id="line"></p>
+</div>
+
+<!-- FINAL -->
+<div id="final" class="page">
+  <div class="flowers"></div>
+
+  <div class="card">
+    <h2>I love you forever 💖</h2>
+  </div>
+
+  <button onclick="show('page1')">➡</button>
+</div>
+
+<script>
+const music = document.getElementById("music");
+
+/* START */
+function start(){
+  music.play();
+  show('page2');
+}
+
+/* PAGE SWITCH */
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+/* LETTER */
+function openLetter(n){
+  let img=["img1.jpg","img2.jpg","img3.jpg","img4.jpg","img5.jpg"];
+  let text=[
+    "Tumi amar sobcheye special 💖",
+    "Miss korle amar kache chole asho 🥺",
+    "Tomar smile amar duniya 😍",
+    "Rag korle amake bolo 😘",
+    "Ami sobsomoy tomar sathe 💕"
+  ];
+
+  document.getElementById("popup").style.display="block";
+  document.getElementById("photo").src=img[n-1];
+  document.getElementById("line").innerText=text[n-1];
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+
+/* flower rain */
+function createFlower(){
+  const f=document.createElement("span");
+  f.innerHTML="🌸";
+  f.style.left=Math.random()*100+"vw";
+  f.style.animationDuration=(Math.random()*3+2)+"s";
+  document.querySelector(".flowers")?.appendChild(f);
+  setTimeout(()=>f.remove(),5000);
+}
+setInterval(createFlower,300);
+</script>
+
+</body>
+</html>
