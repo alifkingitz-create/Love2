@@ -4,7 +4,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* Full screen center */
 body{
   margin:0;
   font-family:cursive;
@@ -48,18 +47,19 @@ button{
 }
 
 /* letters */
-letter{
+.letter{
   width:140px;
   height:100px;
   background:#ff99cc;
   margin:12px;
   border-radius:10px;
   color:white;
+
   display:flex;
   justify-content:center;
   align-items:center;
 
-  font-size:10px;
+  font-size:14px;
   text-align:center;
   padding:10px;
 
@@ -79,9 +79,6 @@ letter{
   border-left:70px solid transparent;
   border-right:70px solid transparent;
   border-top:50px solid #ff66a3;
-}
-  .letter:active{
-  transform:scale(0.95);
 }
 
 /* popup */
@@ -149,13 +146,13 @@ letter{
 
 <!-- LETTERS -->
 <div id="letters" class="page">
-  <h2>Open When 💖</h2>
+  <h2>Open koro 🙈💖</h2>
 
   <div class="letter" onclick="openLetter(1)">😳</div>
-  <div class="letter" onclick="openLetter(2)">😚</div>
+  <div class="letter" onclick="openLetter(2)">😽</div>
   <div class="letter" onclick="openLetter(3)">🫠</div>
   <div class="letter" onclick="openLetter(4)">🙈</div>
-  <div class="letter" onclick="openLetter(5)">😶‍🌫️</div>
+  <div class="letter" onclick="openLetter(5)">😁</div>
 
   <button onclick="show('final')">➡</button>
 </div>
@@ -197,10 +194,10 @@ function show(id){
 function openLetter(n){
   let img=["img1.jpg","img2.jpg","img3.jpg","img4.jpg","img5.jpg"];
   let text=[
-    "Aaayyy haaayyy 😽💖",
-    "He He He He 😁",
-    "Cutie 😍",
+    "Aaayyy haaayyy 🫠💖",
+    "He He He He 😁😽",
     "😳🕶️🤏🏻",
+    "😽😁",
     "Love you 🙈💕"
   ];
 
